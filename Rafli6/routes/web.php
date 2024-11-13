@@ -21,10 +21,11 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::group(['middleware' => ['role:pustakawan']], function () {
-    Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
-    Route::get('/books/edit/{id}', [BookController::class, 'edit'])->name('books.edit');
-    Route::post('/books/store', [BookController::class, 'store'])->name('books.store');
-    Route::patch('/books/update', [BookController::class, 'update'])->name('books.update');
+    Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
+    Route::get('/book/edit/{id}', [BookController::class, 'edit'])->name('book.edit');
+    Route::post('/book/store', [BookController::class, 'store'])->name('book.store');
+    Route::patch('/book/update', [BookController::class, 'update'])->name('book.update');
+    Route::patch('/book/{id}/delete', [BookController::class, 'destroy'])->name('book.destroy');
 });
 
 require __DIR__.'/auth.php';
